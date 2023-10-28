@@ -1,0 +1,41 @@
+<%- include('header') %>
+    <div class="card" style="width: 700px; margin-left: 400px; margin-top: 100px;">
+        <div class="card-body">
+            <div class="card-title">
+                <span class="material-symbols-outlined material-icon">
+                    category
+                </span>
+                Catagory
+            </div>
+            <a class="btn btn-success mb-2 mt-2 float-end me-2" href="/addGroupProduct">
+                <span class="material-symbols-outlined material-icon">
+                    add_circle
+                </span>
+                Add
+            </a>
+            <table class="table">
+                <thead>
+                    <th style="padding-left: 70px;">Name</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                <% category.forEach((cate) => { %>
+                        <tr>
+                            <td style="padding-left: 70px;">
+                                <%= cate.name %>
+                            </td>
+                            <td style="width: 200px;">
+                                <a class="btn btn-primary" href="/editCate/<%= cate.id %>">
+                                    Edit
+                                </a>
+                                <a class="btn btn-danger" onclick="return confirm('Want to delete?')" href="/deteleCate/<%= cate.id %>">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                </tbody>
+                <% }) %>
+            </table>
+        </div>
+    </div>
+    <%- include('footer') %>

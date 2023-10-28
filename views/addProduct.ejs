@@ -1,0 +1,65 @@
+<%- include('header') %>
+    <form method="post" enctype="multipart/form-data" class="mb-3">
+        <div class="card" style="width: 1200px; margin-top: 60px; margin-left: 150px;">
+            <div class="card-body">
+                <div class="row g-3 mt-5">
+                    <div class="card-title">
+                        <h1 class="text-center">ເພິ່ມສິນຄ້າ</h1>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">ປະເພດສິນຄ້າ</label>
+                        <select name="group_product_id" class="form-control">
+                            <% cate.forEach((c)=> { %>
+                                <option value="<%= c.id %>" <% if (product.group_product_id==c.id) { %>selected<% } %>>
+                                        <%= c.name %>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">Barcode</label>
+                        <input type="text" name="barcode" class="form-control" value="<%= product.barcode %>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">ຊື່ສິນຄ້າ</label>
+                        <input type="text" name="name" class="form-control" value="<%= product.name %>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">ລາຍລະອຽດສິນຄ້າ</label>
+                        <input type="text" name="detail" class="form-control" value="<%= product.detail %>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">ລາຄາຕົ້ນທືນ</label>
+                        <input type="number" name="cost" class="form-control" value="<%= product.cost %>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">ລາຄາຂາຍ</label>
+                        <input type="number" name="price" class="form-control" value="<%= product.price %>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">ຈຳນວນສິນຄ້າ</label>
+                        <input type="number" name="stock_qty" class="form-control" value="<%= product.stock_qty %>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">ຮູບພາບ</label>
+                        <% if (product.img !=undefined) { %>
+                            <div class="mb-2 d-flex align-items-center justify-content-center">
+                                <img id="previewImage" src="../images/<%= product.img %>" width="200px">
+                            </div>
+                            <% } %>
+                                <input type="file" name="img" class="form-control">
+                    </div>
+
+                    <div class="col-12 mt-5">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-success mx-auto w-50 fw-bold">ບັນທືກ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <%- include('footer') %>

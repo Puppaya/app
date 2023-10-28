@@ -1,0 +1,56 @@
+<%- include('page_header') %>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12">
+                <div class="row">
+                    <% post.forEach((p)=> { %>
+                        <div class="col-md-3 col-sm-6 col-xl-3 mt-3" id="product-<%= p.id %>">
+                            <div class="card custom-card mb-3" id="card">
+                                <a href="/postDetail/<%= p.id %>" class="nav-link">
+                                    <img src="/images/seller/<%= p.img %>"
+                                        class="card-img-top object-fit-fill border rounded" alt="Card Image 1" width:
+                                        100%; height: 300px;>
+                                    <div class="card-body">
+                                        <b class="card-title fs-6" id="text-ellipsis">
+                                            <%= p.name %>
+                                        </b>
+                                        <div class="card-text text-danger fw-bolder float-start">
+                                            <%= new Intl.NumberFormat('th-TH', { style: 'decimal' }).format(p.price) %>
+                                                ກີບ
+                                        </div>
+                                        <br>
+                                        <p class="card-text text-secondary" style="font-size: 12px;">
+                                            <%= p.address %>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% if(session.token !== undefined) { %>
+    <div id="btn-post">
+        <a type="button" class="btn btn-success btn-circle" href="/addPost" data-bs-toggle="tooltip"
+            data-bs-placement="left" title="Post">
+            <span class="material-symbols-outlined material-icon">
+                edit_square
+            </span>
+        </a>
+        <a type="button" class="btn btn-success btn-circle" href="/editSeller" data-bs-toggle="tooltip"
+            data-bs-placement="left" title="Profile">
+            <span class="material-symbols-outlined material-icon">
+                group
+            </span>
+        </a>
+        <a type="button" class="btn btn-success btn-circle" href="/mypost" data-bs-toggle="tooltip"
+            data-bs-placement="left" title="My post">
+            <span class="material-symbols-outlined material-icon">
+                edit
+            </span>
+        </a>
+    </div>
+    <% } %>
+    <%- include('page_footer') %>

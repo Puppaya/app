@@ -1,0 +1,76 @@
+<%- include('header') %>
+    <div class="container-fluid p-3" style="width: 1500px;">
+        <div class="card mt-3">
+            <a class="btn btn-success mb-2 mt-2 float-start ms-5" href="/addProduct" style="width: 100px;">
+                <span class="material-symbols-outlined material-icon">
+                    add_circle
+                </span>
+                Add
+            </a>
+            <div class="card-body">
+                <div class="card-title">
+                    <span class="material-symbols-outlined material-icon">
+                        inventory_2
+                    </span>
+                    <b>
+                        Product
+                    </b>
+                </div>
+                <div class="table-responsive">
+                    <!-- เพิ่มคลาส .table-responsive -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>category</th>
+                            <th>barcode</th>
+                            <th>name</th>
+                            <th>ຈຳນວນສິນຄ້າ</th>
+                            <th class="text-end">cost</th>
+                            <th class="text-end">price</th>
+                            <th>image</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <% product.forEach((pro)=> { %>
+                                <tr>
+                                    <td style="width: 150px;">
+                                        <%= pro.group_product_name %>
+                                    </td>
+                                    <td style="width: 20px;" class="text-center">
+                                        <%= pro.barcode %>
+                                    </td>
+                                    <td style="width: 200px;">
+                                        <%= pro.name %>
+                                    </td>
+                                    <td class="text-center" style="width: 100px;">
+                                        <%= pro.stock_qty %>
+                                    </td>
+                                    <td style="width: 130px;" class="text-end">
+                                        <%= new Intl.NumberFormat('th-TH', { style: 'decimal' }).format(pro.cost) %> Kip
+                                    </td>
+                                    <td style="width: 130px;" class="text-end">
+                                        <%= new Intl.NumberFormat('th-TH', { style: 'decimal' }).format(pro.price) %>
+                                            Kip
+                                    </td>
+                                    <td style="width: 150px;" class="text-center">
+                                        <img src="images/<%= pro.img %>" width="100px">
+                                    </td>
+                                    <td style="width: 100px; align-items: center;" class="text-center">
+                                        <a class="material-symbols-outlined material-icon btn btn-primary"
+                                            href="/editPro/<%= pro.id %>">
+                                            edit
+                                        </a>
+                                        <a class="material-symbols-outlined material-icon btn btn-danger"
+                                            href="/deletePro/<%= pro.id %>" onclick="return confirm('Want to delete?')">
+                                            delete
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div> <!-- ปิด .table-responsive -->
+            </div>
+        </div>
+    </div>
+
+    <%- include('footer') %>

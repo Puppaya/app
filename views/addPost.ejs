@@ -1,0 +1,50 @@
+<%- include('page_header') %>
+    <% if(session.token !== undefined) { %>
+    <form method="post" enctype="multipart/form-data" class="mb-3">
+        <div class="card" style="width: 1200px; margin-top: 60px; margin-left: 150px;">
+            <div class="card-body">
+                <div class="row g-3 mt-5">
+                    <div class="card-title">
+                        <h1 class="text-center">ສ້າງໂພສ</h1>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">ຊື່ສິນຄ້າ</label>
+                        <input type="text" name="name" class="form-control" value="<%= post.name %>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">ລາຄາ</label>
+                        <input type="number" name="price" class="form-control" value="<%= post.price %>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">ທີ່ຢູ່</label>
+                        <input type="text" name="address" class="form-control" value="<%= post.address %>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">ເບີຕິດຕໍ່</label>
+                        <input type="number" name="contact" class="form-control" value="<%= post.contact %>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="mb-2">ລາຍລະອຽດ</label>
+                        <input type="text" name="detail" class="form-control" value="<%= post.detail %>">
+                    </div>
+                    <div class="col-6">
+                        <label for="" class="mb-2">ຮູບພາບ</label>
+                        <input type="file" name="img" class="form-control" id="imageInput">
+                        <% if (post.img !== undefined) { %>
+                        <img id="previewImage" src="../images/seller/<%= post.img %>" width="200px" class="mt-2">
+                        <% } %>
+                    </div>
+
+                    <div class="col-12 mt-5">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-success mx-auto w-50 fw-bold">ບັນທືກ</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <% } %>
+    <%- include('page_footer') %>

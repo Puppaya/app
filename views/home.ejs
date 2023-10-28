@@ -1,0 +1,143 @@
+<%- include('header') %>
+    <div class="row mt-5">
+        <div class="col-lg-4">
+            <div class="card bg-primary text-white" id="card-dashboard">
+                <div class="card-title">
+                    <h4>ຍອດຂາຍ
+                        <span class="material-symbols-outlined material-icon text-secondary" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="ສະຫຼຸບຍອດຂາຍທັງໝົດ ບໍ່ໄດ້ແບ່ງຍ້ອນມີຂໍ້ມູນບໍ່ຫຼາຍ"
+                            style="cursor: pointer;">
+                            help
+                        </span>
+                    </h4>
+                    <div class="card-body">
+                        <h1 class="">
+                            <%= new Intl.NumberFormat('th-TH', { style: 'decimal' }).format(rev.revenue) %> ກີບ
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card bg-warning text-white" id="card-dashboard">
+                <div class="card-title">
+                    <h4>ຈຳນວນຍອດສັ່ງຊື້
+                        <span class="material-symbols-outlined material-icon text-secondary" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="ສະຫຼຸບຍອດສັ່ງຊື້ທັງໝົດ ບໍ່ໄດ້ແບ່ງຍ້ອນມີຂໍ້ມູນບໍ່ຫຼາຍ"
+                            style="cursor: pointer;">
+                            help
+                        </span>
+                    </h4>
+                    <div class="card-body">
+                        <h1 class="">
+                            <%= order.TotalOrder %> ລາຍການ
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card bg-success text-white" id="card-dashboard">
+                <div class="card-title">
+                    <h4>ຈຳນວນຜູ້ຂາຍໃນລະບົບ</h4>
+                    <div class="card-body">
+                        <h1 class="">
+                            <%= seller.Totalseller %> ຄົນ
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+            <div class="card" id="card-dashboard2">
+                <div class="card-title">
+                    <h3>ລາຍຊື່ຜູ້ໃຊ້ລະບົບ</h3>
+                </div>
+                <div class="card-body" style="height: 200px;">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">ຊື່</th>
+                                <th scope="col">ຊື່ຜູ້ໃຊ້</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% user.forEach((u)=> { %>
+                                <tr>
+                                    <th>
+                                        <%= u.id %>
+                                    </th>
+                                    <td>
+                                        <%= u.name %>
+                                    </td>
+                                    <td>
+                                        <%= u.usr %>
+                                    </td>
+                                </tr>
+                        </tbody>
+                        <% }) %>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+            <div class="card" id="card-dashboard2">
+                <div class="card-title">
+                    <h3>ສິນຄ້າຂາຍດີ</h3>
+                </div>
+                <div class="card-body" style="overflow-y: auto; height: 200px;">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ປະເພດສິນຄ້າ</th>
+                                <th>ຊື່ສິນຄ້າ</th>
+                                <th>ຈຳນວນສິນຄ້າໃນຄັງ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% product.forEach((p)=> { %>
+                                <tr>
+                                    <th>
+                                        <%= p.group_product_name %>
+                                    </th>
+                                    <td>
+                                        <%= p.name %>
+                                    </td>
+                                    <td>
+                                        <%= p.stock_qty %>
+                                    </td>
+                                </tr>
+                        </tbody>
+                        <% }) %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-3">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+            <div class="card m-5 mx-auto text-center" id="card-dashboard3">
+                <div class="card-title">
+                    ລາຍງານການຂາຍ
+                </div>
+                <div class="card-body">
+                    <canvas id="salesChart" width="auto" height="auto"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+            <div class="card m-5 mx-auto text-center" id="card-dashboard3">
+                <div class="card-title">
+                    ລາຍງານການຂາຍ
+                </div>
+                <div class="card-body">
+                    <canvas id="salesChart2" width="auto" height="auto"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('footer') %>

@@ -1,0 +1,29 @@
+<%- include('page_header') %>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <% postDetail.forEach((p)=> { %>
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-5">
+                        <img class="card-img-top mb-5 mb-md-0" src="/images/seller/<%= p.img %>" alt="...">
+                    </div>
+                    <div class="col-md-7 col-lg-7">
+                        <h3 class="display-5 fw-bolder">
+                            <%= p.name %>
+                        </h3>
+                        <span class="small mb-1 me-5">ຜູ້ຂາຍ: <%= p.usr %></span>
+                        <span class="small mb-1">ສະຖານທີ່: <%= p.address %></span>
+                        <div class="fs-5 mb-3 mt-3">
+                            <span class="me-5">ລາຄາ <%= new Intl.NumberFormat('th-TH', { style: 'decimal'
+                                    }).format(p.price) %>
+                                    ກີບ</span>
+                            <b>ເບີຕິດຕໍ່: <%= p.contact %> </b>
+                        </div>
+                        <p class="lead">
+                            <%= p.detail %>
+                        </p>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </section>
+    <%- include('page_footer') %>

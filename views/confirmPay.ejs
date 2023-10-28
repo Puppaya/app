@@ -1,0 +1,31 @@
+<%- include('page_header') %>
+    <form method="post" enctype="multipart/form-data" class="mb-3">
+        <div class="card" style="width: 500px; margin-left: 500px; margin-top: 60px;">
+            <div class="card-body">
+                <div class="card-title">
+                    <h1 class="text-center">ຢືນຢັນການຈ່າຍເງີນ</h1>
+                </div>
+                <% const orderId=locals.orderId; %>
+                    <% const req=locals.req; %>
+                        <div class="mt-3">
+                            <span>
+                                Order ID:
+                            </span>
+                            <b class="text-danger">
+                                <%= orderId %>
+                            </b>
+                        </div>
+                        <div class="mt-4 mb-2">
+                            <label for="" class="mb-2">ຮູບພາບ</label>
+                            <input type="file" name="pay_img" class="form-control" id="imageInput">
+                            <img id="previewImage" src="" width="200px" class="mt-2">
+                        </div>
+                        <div class="mt-3 float-end">
+                            <div class="mb-2 d-flex align-items-center justify-content-center">
+                                <button type="submit" class="btn btn-success">ຢືນຢັນ</button>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </form>
+    <%- include('page_footer') %>

@@ -1,0 +1,40 @@
+<%- include('header') %>
+    <div class="card card-body border border-3" style="height: 500px; width: 1000px; margin-left: 220px; margin-top: 80px;">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 mt-3">
+                <h1 class="mb-3 text-center">Register</h1>
+                <form method="post">
+                    <div class="row g-3 mt-5">
+                        <div class="col-md-6">
+                            <label for="your-name" class="form-label">Name</label>
+                            <input type="text" class="form-control" name="name" value="<%= user.name %>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="your-surname" class="form-label">Username</label>
+                            <input type="text" class="form-control" name="usr" value="<%= user.usr %>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="your-email" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="pwd" value="<%= user.pwd %>" required>
+                        </div>
+                        <div class="col-md-6 mt-3 ms-1">
+                            <label class="form-label">Level</label>
+                            <div>
+                                <input type="radio" name="level" value="user" <% if (user.level == 'user') { %>checked <% } %> > User
+                                <input type="radio" name="level" value="admin" <% if (user.level == 'admin') { %>checked <% } %> > Admin
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="submit"
+                                        class="btn btn-success w-100 fw-bold">Sign Up</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('footer') %>

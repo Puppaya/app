@@ -1,0 +1,44 @@
+<%- include('header') %>
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="card-title mb-5">
+                    <h3>
+                        ລາຍງານຍອດຂາຍ ລາຍເດືອນ
+                    </h3>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Barcode ສິນຄ້າ</th>
+                            <th scope="col">ລາຍການສິນຄ້າ</th>
+                            <th>ຂາຍແລ້ວ</th>
+                            <th scope="col" class="text-end">ຍອດລວມ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% arr.forEach(item=> { %>
+                            <tr>
+                                <td>
+                                    <%= item.barcode %>
+                                </td>
+                                <td>
+                                    <%= item.name %>
+                                </td>
+                                <td>
+                                    <%= item.totalQty %> ອັນ
+                                </td>
+                                <td class="text-end">
+                                    <%= new Intl.NumberFormat('th-TH', { style: 'decimal' }).format(item.totalPrice) %>
+                                        Kip
+                                        ກີບ
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <%- include('footer') %>

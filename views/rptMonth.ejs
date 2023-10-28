@@ -1,0 +1,54 @@
+<%- include('header') %>
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="card-title mb-5">
+                    <h3>
+                        ລາຍງານຍອດຂາຍ ລາຍເດືອນ
+                    </h3>
+                </div>
+                <form action="" method="get">
+                    <div class="row">
+                        <div class="col-1">ປີ</div>
+                        <div class="col-2">
+                            <select class="form-control" name="year">
+                                <% arrYear.reverse().forEach((item)=> { %>
+                                    <option value="<%= item %>" <% if (item==y) { %> selected <% } %>>
+                                            <%= item %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-success" type="submit">ສະແດງຜົນ</button>
+                        </div>
+                    </div>
+                </form>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ເດືອນທີ</th>
+                            <th scope="col" class="text-end">ຍອດລວມ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% arr.forEach((item, index)=> { %>
+                            <% if (item !==0) { %>
+                                <tr>
+                                    <td>
+                                        <%= index + 1 %>
+                                    </td>
+                                    <td class="text-end">
+                                        <%= new Intl.NumberFormat('th-TH', { style: 'decimal' }).format(item) %> Kip
+                                    </td>
+                                </tr>
+                                <% } %>
+                                    <% }) %>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <%- include('footer') %>

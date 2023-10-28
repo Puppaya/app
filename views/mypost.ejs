@@ -1,0 +1,67 @@
+<%- include('page_header') %>
+    <div class="container-fluid p-3" style="width: 1500px;">
+        <div class="card mt-3">
+            <a class="btn btn-success mb-2 mt-2 float-start ms-5" href="/addPost" style="width: 100px;">
+                <span class="material-symbols-outlined material-icon">
+                    add_circle
+                </span>
+                Add
+            </a>
+            <div class="card-body">
+                <div class="card-title">
+                    <span class="material-symbols-outlined material-icon">
+                        inventory_2
+                    </span>
+                    <b>
+                        Product
+                    </b>
+                </div>
+                <div class="table-responsive">
+                    <!-- เพิ่มคลาส .table-responsive -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>ຫົວຂໍ້</th>
+                            <th>ລາຄາ</th>
+                            <th>ທີ່ຢູ່</th>
+                            <th>ເບີໂທ</th>
+                            <th>ລາຍລະອຽດ</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <% post.forEach((p)=> { %>
+                                <tr>
+                                    <td style="width: 150px;">
+                                        <%= p.name %>
+                                    </td>
+                                    <td style="width: 20px;">
+                                        <%= new Intl.NumberFormat('th-TH', { style: 'decimal' }).format(p.price) %> Kip
+                                    </td>
+                                    <td style="width: 200px;">
+                                        <%= p.address %>
+                                    </td>
+                                    <td style="width: 100px;">
+                                        <%= p.contact %>
+                                    </td>
+                                    <td style="width: 100px;">
+                                        <%= p.detail %>
+                                    </td>
+                                    <td style="width: 100px; align-items: center;" class="text-center">
+                                        <a class="material-symbols-outlined material-icon btn btn-primary"
+                                            href="/editPost/<%= p.id %>">
+                                            edit
+                                        </a>
+                                        <a class="material-symbols-outlined material-icon btn btn-danger"
+                                            href="/deletePost/<%= p.id %>" onclick="return confirm('Want to delete?')">
+                                            delete
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div> <!-- ปิด .table-responsive -->
+            </div>
+        </div>
+    </div>
+
+    <%- include('page_footer') %>

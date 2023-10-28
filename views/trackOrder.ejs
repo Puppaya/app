@@ -1,0 +1,49 @@
+<%- include('page_header') %>
+    <form action="" method="post">
+        <div class="card p-5 m-5">
+            <div class="card-tile text-center">
+                <h4>ຕິດຕາມການສັ່ງຊື້</h4>
+            </div>
+            <div class="card-body">
+                <div class="input-group mb-3 p-5">
+                    <input type="text" class="form-control" placeholder="ປ້ອນເບີໂທເພື່ອຕິດຕາມການສັ່ງຊື້" name="phone">
+                    <button class="btn btn-outline-success" type="submit" id="button-addon2">ຄົ້ນຫາ</button>
+                </div>
+                <% if (order !=undefined) { %>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-9">
+                            <div class="row g-3 mt-2">
+                                <div class="col-md-6">
+                                    <label for="your-name" class="form-label">ຊື່ຜູ້ສັ່ງຊື້</label>
+                                    <input type="text" class="form-control" name="name" value="<%= order.name %>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="your-surname" class="form-label">ລະຫັດຕິດຕາມເຄື່ອງ</label>
+                                    <input type="text" class="form-control" value="<%= order.track_code %>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="your-email" class="form-label">ສະຖານະ</label>
+                                    <input type="text" class="form-control" value="<%= order.status %>">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="your-email" class="form-label">ຊື່ຂົນສົ່ງ</label>
+                                    <input type="text" class="form-control" value="<%= order.track_name %>">
+                                </div>
+                                <% if(order.send_date !=null) { %>
+                                    <div class="col-md-6">
+                                        <label for="your-email" class="form-label">ມື້ຝາກ</label>
+                                        <input type="text" class="form-control"
+                                            value="<%= new Date(order.send_date).toLocaleDateString() %>">
+                                    </div>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                        <% if(order==null) { %>
+                            <h1 class="text-danger text-center">ບໍ່ມີຂໍ້ມູນໃນລະບົບ</h1>
+                            <% } %>
+            </div>
+        </div>
+    </form>
+    <%- include('page_footer') %>

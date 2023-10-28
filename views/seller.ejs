@@ -1,0 +1,40 @@
+<%- include('header') %>
+    <div class="container p-3">
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="card-title">
+                    <span class="material-symbols-outlined material-icon">
+                        account_circle
+                    </span>
+                    ຂໍ້ມູນຜູ້ຂາຍໃນລະບົບ
+                </div>
+                <table class="table">
+                    <thead>
+                        <th style="padding-left: 70px;">ID</th>
+                        <th>ຊື່ ແລະ ນາມສະກຸນ</th>
+                        <th>ເບີໂທ</th>
+                        <th>ຊື່ຜູ້ໃຊ້</th>
+                    </thead>
+                    <tbody>
+                        <% seller.forEach((s)=> { %>
+                            <tr onclick="window.location.href='/sellerDetail/<%= s.id %>'" style="cursor: pointer;">
+                                <td style="padding-left: 70px;">
+                                    <%= s.id %>
+                                </td>
+                                <td style="margin-left: 100px;">
+                                    <%= s.name + ' ' + s.surname %>
+                                </td>
+                                <td>
+                                    <%= s.tel %>
+                                </td>
+                                <td>
+                                    <%= s.usr %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <%- include('footer') %>

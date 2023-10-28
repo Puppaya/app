@@ -1,0 +1,108 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+    // เมื่อคลิกที่แถวของตาราง
+    $("tr[data-href]").click(function () {
+        window.location.href = $(this).data("href");
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ctx = document.getElementById("salesChart").getContext("2d");
+
+        // สร้างข้อมูลตัวอย่าง เปลี่ยนเป็นข้อมูลจริงของคุณ
+        const data = {
+            labels: [
+                "ມັງກອນ",
+                "ກຸມພາ",
+                "ມີນາ",
+                "ເມສາ",
+                "ພຶດສະພາ",
+                "ມິຖຸນາ",
+                "ກໍລະກົດ",
+                "ສິງຫາ",
+                "ກັນຍາ",
+                "ຕຸລາ",
+                "ພະຈິກ",
+                "ທັນວາ",
+            ],
+            datasets: [
+                {
+                    label: "ຍອດຂາຍ (ກີບ)",
+                    data: [500000, 800000, 1200000, 600000, 1000000, 500000, 700000, 400000, 458000, 1250000, 365000, 892000], // ข้อมูลยอดขายในแต่ละเดือน
+                    backgroundColor: "rgba(75, 192, 192, 0.2)",
+                    borderColor: "rgba(75, 192, 192, 1)",
+                    borderWidth: 3,
+                },
+            ],
+        };
+
+        const config = {
+            type: "line",
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            },
+        };
+
+        const myChart = new Chart(ctx, config);
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const ctx = document.getElementById("salesChart2").getContext("2d");
+
+        // สร้างข้อมูลตัวอย่าง เปลี่ยนเป็นข้อมูลจริงของคุณ
+        const data = {
+            labels: [
+                "ມັງກອນ",
+                "ກຸມພາ",
+                "ມີນາ",
+                "ເມສາ",
+                "ພຶດສະພາ",
+                "ມິຖຸນາ",
+                "ກໍລະກົດ",
+                "ສິງຫາ",
+                "ກັນຍາ",
+                "ຕຸລາ",
+                "ພະຈິກ",
+                "ທັນວາ",
+            ],
+            datasets: [
+                {
+                    label: "ຍອດຂາຍ (ກີບ)",
+                    data: [500000, 800000, 1200000, 600000, 1000000, 500000, 700000, 400000, 458000, 1250000, 365000, 892000], // ข้อมูลยอดขายในแต่ละเดือน
+                    hoverOffset: 4
+                },
+            ],
+        };
+
+        const config = {
+            type: "doughnut",
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            },
+        };
+
+        const myChart = new Chart(ctx, config);
+    });
+</script>
+
+</body>
+
+</html>

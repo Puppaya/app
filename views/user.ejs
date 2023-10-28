@@ -1,0 +1,49 @@
+<%- include('header') %>
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="card-title">
+                <span class="material-symbols-outlined material-icon">
+                    account_circle
+                </span>
+                User
+            </div>
+            <a class="btn btn-success mb-2 mt-2 float-end me-2" href="/addUser">
+                <span class="material-symbols-outlined material-icon">
+                    add_circle
+                </span>
+                Add
+            </a>
+            <table class="table">
+                <thead>
+                    <th style="padding-left: 70px;">Name</th>
+                    <th>Username</th>
+                    <th>Level</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <% user.forEach((user)=> { %>
+                        <tr>
+                            <td style="padding-left: 70px;">
+                                <%= user.name %>
+                            </td>
+                            <td style="margin-left: 100px;">
+                                <%= user.usr %>
+                            </td>
+                            <td>
+                                <%= user.level %>
+                            </td>
+                            <td style="width: 200px;">
+                                <a class="btn btn-primary" href="/editUser/<%= user.id %>">
+                                    Edit
+                                </a>
+                                <a class="btn btn-danger" onclick="return confirm('Want to delete?')" href="/deleteUser/<%= user.id %>">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%- include('footer') %>

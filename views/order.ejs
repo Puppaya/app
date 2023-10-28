@@ -1,0 +1,78 @@
+<%- include('header') %>
+    <div class="card mt-5 p-3" style="margin: 50px;">
+        <div class="card-body">
+            <div class="card-title">
+                <h3>
+                    ລາຍການສັ່ງຊື້
+                </h3>
+            </div>
+            <table class="table">
+                <thead>
+                    <th style="padding-left: 40px;">Bill No.</th>
+                    <th>Name</th>
+                    <th>phone</th>
+                    <th>shipping address</th>
+                    <th>ຂໍ້ມູການຈ່າຍ</th>
+                    <th>Status</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <% order.forEach((o)=> { %>
+                        <tr>
+                            <td style="padding-left: 40px; width: 150px;">
+                                <%= o.id %>
+                            </td>
+                            <td>
+                                <%= o.name %>
+                            </td>
+                            <td style="margin-left: 100px;">
+                                <%= o.phone %>
+                            </td>
+                            <td>
+                                <%= o.address %>
+                            </td>
+                            <td>
+                                <% if (o.pay_img) { %>
+                                    <a href="images/payment/<%= o.pay_img %>" target="_blank" class="nav-link">
+                                        ກວດສອບຂໍ້ມູນ
+                                    </a>
+                                <% } else { %>
+                                    ບໍ່ມີຂໍ້ມູນ
+                                <% } %>
+                            </td>
+                            <td>
+                                <%= o.status %>
+                            </td>
+                            <td style="width: 420px;">
+                                <a class="btn btn-info" href="/orderInfo/<%= o.id %>">
+                                    <span class="material-symbols-outlined material-icon">
+                                        visibility
+                                    </span>
+                                    View
+                                </a>
+                                <a class="btn btn-primary" href="/pay/<%= o.id %>">
+                                    <span class="material-symbols-outlined material-icon">
+                                        paid
+                                    </span>
+                                    Paid
+                                </a>
+                                <a class="btn btn-success" href="sendOrder/<%= o.id %>">
+                                    <span class="material-symbols-outlined material-icon">
+                                        local_shipping
+                                    </span>
+                                    Delivery
+                                </a>
+                                <a class="btn btn-danger" href="/delOrder/<%= o.id %>"
+                                    onclick="return confirm('want to delete?')">
+                                    <span class="material-symbols-outlined material-icon">
+                                        delete_forever
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%- include('footer') %>
